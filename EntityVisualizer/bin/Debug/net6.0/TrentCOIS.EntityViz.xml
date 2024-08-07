@@ -1,0 +1,524 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TrentCOIS.EntityViz</name>
+    </assembly>
+    <members>
+        <member name="T:COIS2020.vrajchauhan0827768.Assignments.Entity">
+            <summary>
+            Represents any entity that may appear in the visualizer's "arena."
+            </summary>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Entity.nextID">
+            <summary>
+            The ID that the next-created entity will have. Auto-increments upon each one's creation.
+            </summary>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Entity.defaultSprite">
+            <summary>
+            The sprite that gets used when a child class has not re-specified a sprite.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Entity.ID">
+            <summary>
+            This entity's unique identifier.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Entity.Name">
+            <summary>
+            This entity's name, for when it needs to be displayed/written out.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Entity.Position">
+            <summary>
+            This entity's <i>(x, y)</i> position in 2D space.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Entity.SpriteName">
+             <summary>
+             A string denoting which sprite this entity wants to be drawn with.
+             </summary>
+            
+             <remarks>
+             The names of the sprites are grouped based on which file from the original asset pack they came from. See
+             <c>SpriteMap.xml</c> in the <i>Resources</i> folder to determine the group/name combination required for a given
+             sprite. Not all sprites from the asset pack are included in the map.
+             </remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Entity.#ctor(System.String)">
+            <summary>
+            Creates a new entity.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Entity.#ctor(System.String,System.Single,System.Single)">
+            <summary>
+            Creates a new entity at the given position.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Entity.#ctor(System.String,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Creates a new entity at the given position.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Entity.ToString">
+            <summary>Converts this entity into a string.</summary>
+            <remarks>By default, this just returns the entity's name.</remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Entity.CompareTo(COIS2020.vrajchauhan0827768.Assignments.Entity)">
+            <summary>Compares this entity against another.</summary>
+            <remarks>Comparisons are made using the entities' IDs. A null value is sorted after all others.</remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Entity.Equals(COIS2020.vrajchauhan0827768.Assignments.Entity)">
+            <summary>Compares for entity equality based on ID.</summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Entity.GetHashCode">
+            <summary>Gets the hash code for this entity.</summary>
+            <remarks>This simply returns the <see cref="M:System.UInt32.GetHashCode">hash code of this entity's ID.</see></remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Entity.Equals(System.Object)">
+            <summary>Catch-all version of <see cref="M:COIS2020.vrajchauhan0827768.Assignments.Entity.Equals(COIS2020.vrajchauhan0827768.Assignments.Entity)"/>.</summary>
+        </member>
+        <member name="T:COIS2020.vrajchauhan0827768.Assignments.IHasHP">
+             <summary>
+             Represents an entity that has HP (for "hit points," AKA health).
+             </summary>
+            
+             <remarks>
+             Any entity that implements this interface will have a health-bar drawn in the right-hand panel in the <see
+             cref="T:COIS2020.vrajchauhan0827768.Assignments.Visualizer"/>.
+             </remarks>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.IHasHP.HP">
+            <summary>
+            How much more damage this entity can currently withstand.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.IHasHP.MaxHP">
+            <summary>
+            How much damage this entity can withstand in total.
+            </summary>
+        </member>
+        <member name="T:COIS2020.vrajchauhan0827768.Assignments.IHasRange">
+             <summary>
+             Represents an entity that has some circular "range" around it.
+             </summary>
+            
+             <remarks>
+             Any entity that implements this interface will have a circle drawn around it in the main arena.
+             </remarks>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.IHasRange.Range">
+            <summary>
+            How large this unit's "range" is, as a radius.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.IHasRange.RangeCircleColor">
+            <summary>
+            What color to draw this unit's circle. Faint red by default.
+            </summary>
+        </member>
+        <member name="T:COIS2020.vrajchauhan0827768.Assignments.RenderPanel">
+            <summary>
+            A wrapper object that contains both a <see cref="T:Microsoft.Xna.Framework.Rectangle">region to be drawn within</see> as well as the
+            <see cref="T:Microsoft.Xna.Framework.Graphics.RenderTarget2D">render target it gets rendered onto.</see>
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.RenderPanel.Texture">
+            <summary>
+            The texture that this panel has been rendered onto.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.RenderPanel.Destination">
+            <summary>
+            Where on the screen this panel is to be drawn.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.RenderPanel.DrawFn">
+            <summary>
+            How to draw onto this surface. Only executed if the panel is not currently <see cref="P:COIS2020.vrajchauhan0827768.Assignments.RenderPanel.Dirty">dirty</see>.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.RenderPanel.Dirty">
+            <summary>
+            Whether or not the panel needs to be re-drawn on the next frame. Reset automatically when a redraw occurs.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.RenderPanel.RedrawContents(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Executes this panel's draw method if the panel is dirty.
+            </summary>
+            <param name="gameTime">The current game time.</param>
+            <returns>True if the panel was dirty and a redraw took place.</returns>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.RenderPanel.IsMouseOver(Microsoft.Xna.Framework.Input.MouseState)">
+            <summary>
+            Checks whether or not the mouse is currently over this panel.
+            </summary>
+            <param name="mouse">The current mouse state.</param>
+            <returns>True if the mouse is over top of this panel, false otherwise.</returns>
+        </member>
+        <member name="T:COIS2020.vrajchauhan0827768.Assignments.Sprite">
+             <summary>
+             A pre-loaded texture with a position, width, and height. Sprites are loaded from XML files in
+             <c>Resources/Sprites</c> and are assigned <see cref="F:COIS2020.vrajchauhan0827768.Assignments.Sprite.Name">names</see> with which they may be referred to by
+             implementors of the <see cref="T:COIS2020.vrajchauhan0827768.Assignments.Visualizer"/> class.
+             </summary>
+            
+             <remarks>
+             Currently, all sprites are loaded texture-atlas style, with an X- and Y-offset into the source image.
+             </remarks>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Sprite.Name">
+            <summary>This sprite's name.</summary>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Sprite.Texture">
+            <summary>A reference to the underlying texture atlas that this sprite lives within.</summary>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Sprite.SourceRect">
+            <summary>Where in the <see cref="F:COIS2020.vrajchauhan0827768.Assignments.Sprite.Texture">texture atlas</see> this sprite comes from.</summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Sprite.Width">
+            <summary>How wide this sprite is, in pixels.</summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Sprite.Height">
+            <summary>How tall this sprit is, in pixels.</summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.#ctor(System.String,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Instantiation is done by the static <c cref="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.LoadAll(Microsoft.Xna.Framework.Graphics.GraphicsDevice)" /> method.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.Cropped(Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Returns a new version of this sprite with a smaller source rectangle.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.DrawCentered(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Draws this sprite centered at a given point.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="pos">Where to position this sprite.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.DrawCentered(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draws this sprite centered at a given point.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="pos">Where to position this sprite.</param>
+            <param name="tint">A color to tint the sprite with.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.DrawCentered(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2,System.Int32,System.Int32)">
+            <summary>
+            Draws this sprite centered at a given point and at a given size.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="pos">Where to position this sprite.</param>
+            <param name="w">How wide to draw this sprite.</param>
+            <param name="h">How tall to draw this sprite.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.DrawCentered(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2,System.Int32,System.Int32,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draws this sprite centered at a given point and at a given size.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="pos">Where to position this sprite.</param>
+            <param name="w">How wide to draw this sprite.</param>
+            <param name="h">How tall to draw this sprite.</param>
+            <param name="tint">A color to tint the sprite with.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.DrawCentered(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Int32,System.Int32)">
+            <summary>
+            Draws this sprite centered at a given point.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="x">The x-coordinate of where to draw this sprite.</param>
+            <param name="y">The y-coordinate of where to draw this sprite.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.DrawCentered(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Int32,System.Int32,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draws this sprite centered at a given point.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="x">The x-coordinate of where to draw this sprite.</param>
+            <param name="y">The y-coordinate of where to draw this sprite.</param>
+            <param name="tint">A color to tint the sprite with.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.DrawCentered(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Draws this sprite centered at a given point and at a given size.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="x">The x-coordinate of where to draw this sprite.</param>
+            <param name="y">The y-coordinate of where to draw this sprite.</param>
+            <param name="w">How wide to draw this sprite.</param>
+            <param name="h">How tall to draw this sprite.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.DrawCentered(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draws this sprite centered at a given point and at a given size.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="x">The x-coordinate of where to draw this sprite.</param>
+            <param name="y">The y-coordinate of where to draw this sprite.</param>
+            <param name="w">How wide to draw this sprite.</param>
+            <param name="h">How tall to draw this sprite.</param>
+            <param name="tint">A color to tint the sprite with.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Int32,System.Int32)">
+            <summary>
+            Draws this sprite with its top-left corner at a given X and Y position.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="x">The x-coordinate of where to draw this sprite.</param>
+            <param name="y">The y-coordinate of where to draw this sprite.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Int32,System.Int32,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draws this sprite with its top-left corner at a given X and Y position.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="x">The x-coordinate of where to draw this sprite.</param>
+            <param name="y">The y-coordinate of where to draw this sprite.</param>
+            <param name="tint">A color to tint the sprite with.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Draws this sprite with its top-left corner at a given X and Y position and at a given size.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="x">The x-coordinate of where to draw this sprite.</param>
+            <param name="y">The y-coordinate of where to draw this sprite.</param>
+            <param name="w">How wide to draw this sprite.</param>
+            <param name="h">How tall to draw this sprite.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draws this sprite with its top-left corner at a given X and Y position and at a given size.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="x">The x-coordinate of where to draw this sprite.</param>
+            <param name="y">The y-coordinate of where to draw this sprite.</param>
+            <param name="w">How wide to draw this sprite.</param>
+            <param name="h">How tall to draw this sprite.</param>
+            <param name="tint">A color to tint the sprite with.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Draws this sprite, filling the given destination rectangle.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="dest">The destination location.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draws this sprite, filling the given destination rectangle.
+            </summary>
+            <param name="spriteBatch">The sprite batch to draw into.</param>
+            <param name="dest">The destination location.</param>
+            <param name="tint">A color to tint the sprite with.</param>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Sprite.SpriteResourcePath">
+            <summary>The folder where <see cref="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.LoadAll(Microsoft.Xna.Framework.Graphics.GraphicsDevice)"/> will look for sprites.</summary>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Sprite.SpriteGroupSeparator">
+            <summary>The text that is inserted between different groups as defined in the XML files.</summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.LoadAll(Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
+            <summary>
+            Loads all sprites from the <see cref="F:COIS2020.vrajchauhan0827768.Assignments.Sprite.SpriteResourcePath">Resources</see> folder.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.ParseXmlGroup(Microsoft.Xna.Framework.Graphics.GraphicsDevice,COIS2020.vrajchauhan0827768.Assignments.SpriteSerialization.XmlSpriteGroup,System.Collections.Generic.Dictionary{System.String,COIS2020.vrajchauhan0827768.Assignments.Sprite}@,System.Collections.Generic.Dictionary{System.String,Microsoft.Xna.Framework.Graphics.Texture2D}@)">
+            <summary>
+            Recursively parses a group of sprite data from XML starting from the root node.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.ParseXmlGroup(Microsoft.Xna.Framework.Graphics.GraphicsDevice,COIS2020.vrajchauhan0827768.Assignments.SpriteSerialization.XmlSpriteGroup,System.String,Microsoft.Xna.Framework.Graphics.Texture2D,System.Collections.Generic.Dictionary{System.String,COIS2020.vrajchauhan0827768.Assignments.Sprite}@,System.Collections.Generic.Dictionary{System.String,Microsoft.Xna.Framework.Graphics.Texture2D}@,System.Boolean)">
+            <summary>
+            Recursively parses a group of sprite data from XML.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Sprite.GetTexture(Microsoft.Xna.Framework.Graphics.GraphicsDevice,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.Xna.Framework.Graphics.Texture2D}@)">
+            <summary>
+            Gets a loaded texture from cache or loads it from disk.
+            </summary>
+        </member>
+        <member name="T:COIS2020.vrajchauhan0827768.Assignments.SpriteSerialization.XmlSpriteGroup">
+            <summary>
+            Represents sprite information as parsed from internal XML files. This type is an implementation detail; it
+            only needs to be public in order for <see cref="T:System.Xml.Serialization.XmlSerializer"/> to work properly.
+            </summary>
+        </member>
+        <member name="T:COIS2020.vrajchauhan0827768.Assignments.SpriteSerialization.XmlSprite">
+            <summary>
+            Represents sprite information as parsed from internal XML files. This type is an implementation detail; it
+            only needs to be public in order for <see cref="T:System.Xml.Serialization.XmlSerializer"/> to work properly.
+            </summary>
+        </member>
+        <member name="T:COIS2020.vrajchauhan0827768.Assignments.Visualizer">
+            <summary>
+            The main entrypoint of EntityVisualizer. This class handles user input, processes game-state updates, and draws to
+            the screen.
+            </summary>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Visualizer.PlayKey">
+            <summary>Which key the user should press to play/pause the visualization.</summary>
+        </member>
+        <member name="F:COIS2020.vrajchauhan0827768.Assignments.Visualizer.StepKey">
+            <summary>Which key the user should press to single-step the visualization.</summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.TileScale">
+            <summary>
+            How large each tile is, as a multiple of the base 10x10-pixel size.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.ArenaWidth">
+            <summary>
+            How wide the main area is, in in-game tiles. Should be an odd number so that the center tiles actually display
+            in the center.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.ArenaHeight">
+            <summary>
+            How tall the main area is, in in-game tiles. Should be an odd number so that the center tiles actually display
+            in the center.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.TickDelayMS">
+            <summary>
+            The number of milliseconds' delay between each step of the simulation.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.IsPlaying">
+            <summary>
+            Whether or not playback is currently enabled.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.IsPaused">
+            <summary>
+            Whether or not playback is currently on pause.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.CurrentTimestamp">
+             <summary>
+             The current game timestamp, or the number of "ticks" that have elapsed since the start of the simulation. Useful
+             for delaying an entity's actions for a certain number of frames. Also useful for logging purposes.
+             </summary>
+            
+             <remarks>
+             For all intents and purposes, this counter is 1-based. It starts at zero, but it is incremented before the first
+             time the user's <see cref="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.Update"/> method is called. That way, tick number "zero" is the one seen before any
+             stepping occurs.
+             </remarks>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.EntityXRange">
+            <summary>
+            How far an entity is allowed to move horizontally under regular conditions.
+            </summary>
+        </member>
+        <member name="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.EntityYRange">
+            <summary>
+            How far an entity is allowed to move vertically under regular conditions..
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.#ctor">
+            <summary>
+            Creates a new, uninitialized visualizer with a window size of 1280x720 (720p).
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates a new, uninitialized visualizer with a given resolution.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.Update">
+            <summary>
+            Should handle all of the logic required to render the next frame/tick of the simulation.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.GetEntities">
+            <summary>
+            Should return a sequence of all of the entities that are participating in this simulation and are to be drawn.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.Stop">
+             <summary>
+             Stops this simulation permanently.
+             </summary>
+            
+             <remarks>
+             To temporarily stop the simulation, toggle the <see cref="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.IsPlaying"/>/<see cref="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.IsPaused"/> properties (or
+             press the <see cref="F:COIS2020.vrajchauhan0827768.Assignments.Visualizer.PlayKey">appropriate keyboard key</see>).
+             </remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.LogMessage(System.String)">
+            <summary>
+            Prints a message to the simulator's message panel. Message will be logged with a timestamp indicating which tick
+            it was called during.
+            </summary>
+            <param name="text">The message to print. Multiple lines are allowed.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.LogMessage(System.String,System.Boolean)">
+            <summary>
+            Prints a message to the simulator's message panel, with or without the included <c>[Tick XYZ]</c> at the start.
+            </summary>
+            <param name="text">The message to print. Multiple lines are allowed.</param>
+            <param name="includeTimestamp">Enable/disables the <c>[Tick XYZ]</c> prefix on the message.</param>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.Initialize">
+             <summary>
+             Sets up any game-state that depends on things like the main window being set up.
+             </summary>
+            
+             <remarks>
+             You do not need to call this method. It is executed automatically when calling <c>Run()</c>.
+             </remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.LoadContent">
+             <summary>
+             Loads and configures any data that depends on the graphics device being set up.
+             </summary>
+            
+             <remarks>
+             You do not need to call this method. It is executed automatically when calling <c>Run()</c>, as well as whenever
+             a graphics device reset occurs.
+             </remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.Update(Microsoft.Xna.Framework.GameTime)">
+             <summary>
+             The internal MonoGame version of <see cref="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.Update"/>.
+             </summary>
+            
+             <remarks>
+             This method is executed automatically every single frame. This is in contrast to the
+             <see cref="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.Update">parameterless version of <c>Update</c></see>, which is only called after a given
+             <see cref="P:COIS2020.vrajchauhan0827768.Assignments.Visualizer.TickDelayMS">tick-delay</see> specified by the user (or when single-stepping).
+             </remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.CallUserUpdate(System.TimeSpan)">
+            <summary>
+            Calls the student's version of Update (the zero-parameter version), increments tick count and timers, and sets
+            panel dirty flags.
+            </summary>
+            <remarks>
+            Called from both the main Update loop and the input handler (if playback is paused).
+            </remarks>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.GetEntityMainPosition(COIS2020.vrajchauhan0827768.Assignments.Entity)">
+            <summary>
+            Computes an entity's (x, y) position on the mainPanel, as opposed to the from-the-middle position they store
+            internally.
+            </summary>
+        </member>
+        <member name="M:COIS2020.vrajchauhan0827768.Assignments.Visualizer.Draw(Microsoft.Xna.Framework.GameTime)">
+             <summary>
+             Redraws the main screen.
+             </summary>
+            
+             <remarks>
+             You do not need to call this method. It is called automatically every frame.
+             </remarks>
+        </member>
+    </members>
+</doc>
